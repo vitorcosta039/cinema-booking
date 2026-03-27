@@ -4,4 +4,5 @@ export interface Reservation {
   seat: string;
   movieName: string;
   createdAt: Date;
+  updatedAt: Date;
 }
