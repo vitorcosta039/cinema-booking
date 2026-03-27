@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -41,6 +42,18 @@ export class ReservationsController {
   @Post()
   create(@Body() reservation: Reservation) {
     const { client, movieName, seat } = reservation;
+
+    if (!client) {
+      throw new BadRequestException('Client is required');
+    }
+
+    if (!movieName) {
+      throw new BadRequestException('Movie name is required');
+    }
+
+    if (!seat) {
+      throw new BadRequestException('Seat is required');
+    }
 
     reservations.push({
       id: reservations[reservations.length - 1].id + 1,
