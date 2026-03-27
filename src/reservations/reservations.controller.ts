@@ -1,4 +1,10 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+} from '@nestjs/common';
 import type { Reservation } from '@/@types/Reservations';
 
 const reservations: Reservation[] = [
@@ -15,5 +21,14 @@ export class ReservationsController {
   @Get()
   findAll(): Reservation[] {
     return reservations;
+  }
+
+  @Get(':id')
+  findById(@Param('id') id: string): Reservation {
+    const reservation = reservations.find(
+      (reservation) => reservation.id === Number(id),
+    );
+
+    return reservation;
   }
 }
