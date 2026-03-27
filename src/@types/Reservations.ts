@@ -3,4 +3,5 @@ export interface Reservation {
   client: string;
   seat: string;
   movieName: string;
+  createdAt: Date;
 }
