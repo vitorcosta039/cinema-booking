@@ -29,6 +29,13 @@ export class ReservationsController {
       (reservation) => reservation.id === Number(id),
     );
 
+    if (!reservation) {
+      throw new NotFoundException({
+        message: 'Reservation not found',
+        status: 404,
+      });
+    }
+
     return reservation;
   }
 }
