@@ -4,6 +4,7 @@ import {
   Get,
   NotFoundException,
   Param,
+  Post,
 } from '@nestjs/common';
 import type { Reservation } from '@/@types/Reservations';
 
@@ -13,6 +14,7 @@ const reservations: Reservation[] = [
     seat: 'A1',
     movieName: 'American Beauty',
     client: 'José Vitor',
+    createdAt: new Date(),
   },
 ];
 
@@ -30,12 +32,27 @@ export class ReservationsController {
     );
 
     if (!reservation) {
-      throw new NotFoundException({
-        message: 'Reservation not found',
-        status: 404,
-      });
+      throw new NotFoundException('Reservation not found');
     }
 
     return reservation;
+  }
+
+  @Post()
+  create(@Body() reservation: Reservation) {
+    const { client, movieName, seat } = reservation;
+
+    reservations.push({
+      id: reservations[reservations.length - 1].id + 1,
+      seat,
+      client,
+      movieName,
+      createdAt: new Date(),
+    });
+
+    return {
+      message: 'Reservation created',
+      status: 'success',
+    };
   }
 }
