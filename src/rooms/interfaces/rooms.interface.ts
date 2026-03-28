@@ -1,5 +1,3 @@
-// src/rooms/interfaces/seat.interface.ts
-
 export enum SeatType {
   STANDARD = 'STANDARD',
   VIP = 'VIP',
