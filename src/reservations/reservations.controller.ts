@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import type { Reservation } from '@/@types/Reservations';
+import type { Reservation } from '@/reservations/interfaces/reservation.interface';
 
 const reservations: Reservation[] = [
   {
