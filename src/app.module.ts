@@ -7,9 +7,16 @@ import { MoviesModule } from './movies/movies.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { ReservationsModule } from './reservations/reservations.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [MoviesModule, RoomsModule, SessionsModule, ReservationsModule],
+  imports: [
+    MoviesModule,
+    RoomsModule,
+    SessionsModule,
+    ReservationsModule,
+    UsersModule,
+  ],
   controllers: [AppController, ReservationsController, MoviesController],
   providers: [AppService],
 })
